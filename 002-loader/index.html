@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>002-loader,摇摇晃晃的Loading</title>
+  <style>
+    /* 让元素居中显示 */
+    body {
+      margin: 0;
+      /* 根据视窗大小的100%高值 */
+      height: 100vh;
+      display: flex;
+      /* 调整子元素为垂直居中 */
+      align-items: center;
+      /* 调整子元素为水平居中 */
+      justify-content: center;
+      background-color: black;
+      overflow: hidden;
+    }
+    /* 定义容器尺寸 */
+    .loader {
+      font-size: 30px;
+      /* 根据字体大小计算：10 * 30px; */
+      width: 10em;
+      height: 10em;
+      /* 调整为border-box，把宽、高、边框等计算限制在指定的范围内 */
+      box-sizing: border-box;
+
+      /* 画出组成圆的顶部弧线： */
+      border-top: .3em solid hotpink;
+      border-radius: 50%;
+
+      /* 用伪元素画出组成圆的另外 2 条弧线： */
+      position: relative;
+
+      /* 把动画效果应用到圆上： */
+      /* 动画函数也可以使用 linear  */
+      animation: rotating 2s linear infinite;
+      --derection: 1;
+    }
+    /* 定义动画效果： */
+    @keyframes rotating {
+      50% {
+        transform: rotate(calc(180deg * var(--derection)));
+      }
+      100% {
+        transform: rotate(calc(360deg * var(--derection)));
+      }
+    }
+    /* 用伪元素画出组成圆的另外 2 条弧线： */
+    .loader::before, .loader::after {
+      content: '';
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      box-sizing: border-box;
+      top: -.2em;
+    }
+    .loader::before {
+      border-top: 0.3em solid dodgerblue;
+      /* 变换，正向旋转120度 */
+      transform: rotate(120deg)
+    }
+    .loader::after {
+      border-top:0.3em solid gold;
+      transform: rotate(-120deg);
+    }
+    /* 设置文字样式 */
+    .loader span {
+      position: absolute;
+      color: white;
+      width: inherit;
+      height: inherit;
+      text-align: center;
+      line-height: 10em;
+      font-family: sans-serif;
+
+      /* 把动画效果应用到文字上： */
+      animation: rotating 2s linear infinite;
+      --derection: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <span>Loading...</span>
+  </div>
+</body>
+</html>
