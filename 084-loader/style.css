@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  /* 1vh 是根据当前视窗表示为 1% 的 height 的值，100vh就是 100%了 */
+  height: 100vh;
+  display: flex;
+  /* 调整垂直方向的位置 */
+  align-items: center;
+  /* 调整水平方向的位置 */
+  justify-content: center;
+  /* 线性渐变颜色 */
+  background: linear-gradient(midnightblue, black);
+}
+.loader {
+  /* 动态计算7个小块和6个边距 */
+  width: calc(1em * 7 + 0.15em * 6);
+  /* em 会根据 font-size 来计算 */
+  height: 1.5em;
+  font-size: 20px;
+  display: flex;
+  /* 均匀地散布项目块，对齐开头和结尾，中间补空白 */
+  justify-content: space-between;
+}
+.loader span {
+  /* 20px; */
+  width: 1em;
+  background-color: deepskyblue;
+  /* 20px * 0.2 = 2px */
+  border-radius: 0.1em;
+  /* 水平方向上倾斜 */
+  /* 最后看动画效果，再给小块加上缩放 */
+  transform: skewX(-25deg) scale(0.1);
+  /* 定义一个动画 animate，无限，交替执行 */
+  animation: animate 0.8s infinite alternate;
+  /* filter用于处理图片，这里让元素透明度为0，提供了许多函数，比如可以把元素模糊等效果。 */
+  filter: opacity(0);
+  /* 为每一个小块的动画分别计算设置不同的延迟时间 */
+  /* calc 可以计算各种值，var可以使用在其他地方定义的css变量，定义的变量以--开头 */
+  /* 自定义变量，只是一个实验性方法，还未成为标准 */
+  animation-delay: calc((var(--n) - 1) * 0.2s);
+}
+/* 为小块定义一个关键帧的动画，显示出小块 */
+@keyframes animate {
+  to {
+    filter: opacity(1);
+    /* 最后的动画效果，把小块的缩放还原 */
+    transform: skewX(-25deg) scale(1);
+  }
+}
+/* :nth-child() 根据元素位置来匹配 */
+.loader span:nth-child(1) {
+  --n: 1;
+}
+.loader span:nth-child(2) {
+  --n: 2;
+} 
+.loader span:nth-child(3) {
+  --n: 3;
+} 
+.loader span:nth-child(4) {
+  --n: 4;
+} 
+.loader span:nth-child(5) {
+  --n: 5;
+} 
+.loader span:nth-child(6) {
+  --n: 6;
+} 
+.loader span:nth-child(7) {
+  --n: 7;
+} 
