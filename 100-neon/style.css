@@ -1,0 +1,72 @@
+body  {
+ margin: 0;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background-color: black;
+}
+.text {
+  background-color: black;
+  color: white;
+  font-size: 180px;
+  font-weight: bold;
+  font-family: sans-serif;
+  /* 这个不常用，这里不需要 */
+  /* text-transform: uppercase; */
+  user-select: none;
+}
+.text::before {
+  /* attr 这个 css 函数可以取到选中元素的属性值 */
+  content: attr(data-text);
+  position: absolute;
+  color: white;
+  /* filter属性可以用来处理图像，比如这里用到的：模糊效果 */
+  /* 看上去像是为文字加了光影 */
+  filter: blur(0.02em);
+  /* 这是css的混色模式，可以与背景、父元素进行颜色混合 */
+  /* 这里用到了反向混合，意味着白的变黑，红黄变绿等等 */
+  /* 因为加了模糊，有了光影效果，再加上反向混合，就得到了描边效果的文字 */
+  mix-blend-mode: difference;
+}
+/* 设置渐变色背景 */
+.neon {
+  position: relative;
+  overflow: hidden;
+  /* 调高亮度 */
+  filter: brightness(200%);
+}
+.gradient {
+  /* 可以达到宽和高都100%的效果 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* 设置背景线性渐变 */
+  background: linear-gradient(45deg, red, gold, lightgreen, gold, red);
+  /* 用混色模式把背景作用到文字上, 多重混色模式，这样就保留了字体的颜色 */
+  mix-blend-mode: multiply;
+}
+.spotlight {
+  position: absolute;
+  /* top: 0; */
+  top: -100%;
+  /* left: 0; */
+  left: -100%;
+  right: 0;
+  bottom: 0;
+  background:
+    /* 圆形，中心白色，外部透明 范围25%，背景居中，x和y向背景重复的间距 */
+    radial-gradient(circle, white, transparent 25%) center / 25% 25%,
+    radial-gradient(circle, white, black 25%) center / 12.5% 12.5%;
+  animation: light 5s linear infinite;
+  /* 用混色模式把光影作用到渐变背景上 */
+  /* 颜色减淡 */
+  mix-blend-mode: color-dodge;
+}
+@keyframes light {
+  to {
+    transform: translate(50%, 50%);
+  }
+}
