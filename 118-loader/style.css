@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: gainsboro;
+}
+.loader {
+  font-size: 10px;
+  width: 4.3em;
+  height: 9.8em;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  /* 最后，增加沙漏的翻转动画 */
+  animation: rotating 2s linear infinite;
+}
+@keyframes rotating {
+  0%, 90% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+
+.top, .bottom {
+  width: 3.5em;
+  height: 3.5em;
+  border-style: solid;
+  border-color: saddlebrown;
+
+  /* 利用边框画出漏斗的初始形状 */
+  border-width: 0.2em 0.2em 0.6em 0.6em;
+  border-radius: 50% 100% 50% 30%;
+
+  /* 隐藏沙子部分 */
+  overflow: hidden;
+}
+/* 分别旋转到合适的角度 */
+.top {
+  transform: rotate(-45deg);
+}
+.bottom {
+  transform: rotate(135deg);
+}
+.top::before, .bottom::before {
+  content: '';
+  /* 这个属性可以把行级元素转换成块级元素 */
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: deepskyblue;
+
+  /* 定义好公用的动画配置 */
+  animation: 2s linear infinite;
+}
+.top::before {
+  border-radius: 0 100% 0 0;
+  animation-name: drop-sand;
+  /* transform: translate(-2.5em, 2.5em); */
+}
+.bottom::before {
+  border-radius: 0 0 0 35%;
+  transform: translate(2.5em, -2.5em);
+  animation-name: fill-sand;
+}
+@keyframes drop-sand {
+  to {
+    transform: translate(-2.5em, 2.5em);
+  }
+}
+@keyframes fill-sand {
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+/* 用外层的容器伪元素制作一个窄长条，模拟沙子落下 */
+.loader::after {
+  content: '';
+  position: absolute;
+  width: 0.2em;
+  height: 4.8em;
+  background-color: deepskyblue;
+  top: 1em;
+
+  /* 增加沙子流动的动画效果 */
+  animation: flow 2s linear infinite;
+}
+@keyframes flow {
+  10%, 100% {
+    transform: translateY(3.2em);
+  }
+}
