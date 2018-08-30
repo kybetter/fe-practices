@@ -10,3 +10,4 @@
 [099-loader](./099-loader/index.html) | 一个过山车loader，教程：[前端每日实战：99](https://segmentfault.com/a/1190000015924973) | <img src="./099-loader/099-loader.gif" width=200 />
 [100-neon](./100-neon/index.html) | 一个超级漂亮的霓虹效果loader，教程：[前端每日实战：100](https://segmentfault.com/a/1190000015939758) | <img src="./100-neon/100-neon.gif" width=200 />
 [118-loader](./118-loader/index.html) | 一个漏斗效果的loader，教程：[前端每日实战：118](https://segmentfault.com/a/1190000016153878) | <img src="./118-loader/118-loader.gif" width=200 />
+[122-icon](./122-icon/index.html) | 一个苹果手机相册的icon，教程：[前端每日实战：122](https://segmentfault.com/a/1190000016202268) | <img src="./122-icon/122-icon.png" width=200 />
