@@ -17,44 +17,53 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.center {
-  box-sizing: border-box;
+/* 设置每一个盒子的尺寸及边框大小 */
+.box {
   position: absolute;
-  width: 1em;
-  height: 1em;
-  border: 0.05em solid firebrick;
-  transform: rotate(45deg);
-}
-.top {
   box-sizing: border-box;
-  position: absolute;
   width: 1em;
-  height: 1em;
-  border: 0.05em solid firebrick;
-  border-left: 0 none;
-  border-top: 0 none;
+  height: 0.4em;
+  border: var(--b) solid firebrick;
+  --b: 0.1em;
 }
-.top::before, .top::after {
+/* 画每一个盒子，调整边框样式和位置，组合成基础的结的形状 */
+.knot .box:nth-child(1) {
+  transform: rotate(45deg) translate(-15%, -38%);
+  border-radius: 20% 0% 0% 20% / 50% 0 0 50%;
+}
+.knot .box:nth-child(1)::after {
   box-sizing: border-box;
   content: '';
   position: absolute;
-  /* top: -0.05em;
-  left: -0.05em; */
-  width: 1em;
-  height: 1em;
-  border: 0.05em solid firebrick;
-  border-radius: 50% 50% 50% 50%;
-}
-.top::before {
-  transform: rotate(-45deg) translate(-33%, -33%);
-  border-radius: 50% 50% 0% 50%;
-  border-bottom: 0 none;
-  border-right: 0 none;
-}
-.top::after {
-  transform: rotate(-45deg) translate(33%, -33%);
+  width: 0.4em;
+  height: 0.4em;
+  border: var(--b) solid firebrick;
   border-radius: 50% 50% 50% 0%;
-  border-left: 0 none;
-  border-bottom: 0 none;
+  top: -0.4em;
+  right: -0.4em;
+}
+.knot .box:nth-child(2) {
+  transform: rotate(45deg) translate(15%, 37%);
+  border-radius: 0% 20% 20% 0% / 0% 50% 50% 0%;
+}
+.knot .box:nth-child(2)::after {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+  width: 0.4em;
+  height: 0.4em;
+  border: var(--b) solid firebrick;
+  border-radius: 50% 0% 50% 50%;
+  top: 0.2em;
+  right: 0.8em;
+}
+
+.knot .box:nth-child(3) {
+  transform: rotate(-45deg) translate(15%, -38%);
+  border-radius: 0% 20% 20% 0% / 0% 50% 50% 0%;
+}
+
+.knot .box:nth-child(4) {
+  transform: rotate(-45deg) translate(-15%, 37%);
+  border-radius: 20% 0% 0% 20% / 50% 0 0 50%;
 }
