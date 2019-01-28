@@ -6,6 +6,7 @@
 ---- | ---- | ----
 [001-knot](./001-knot/index.html) | 自己画的一个中国结，教程：[用css画一个中国结](https://segmentfault.com/a/1190000016306150) | <img src="./001-knot/001-knot.png" width=200 />
 [002-simple-drag](./002-drag/index.html) | 一个简单的拖拽 | <img src="./002-drag/002-drag.gif" width=200 />
+[003-simple-drag-resize](./003-drag-resize/index.html) | 一个简单的拖拽和缩放 | <img src="./003-drag-resize/003.gif" width=200 />
 [065-loader](./065-loader/index.html) | 一个漂亮的 loading，教程：[前端每日实战：65](https://segmentfault.com/a/1190000015424389) | <img src="./065-loader/065-loading.gif" width=200 />
 [084-loader](./084-loader/index.html) | 一个漂亮的 loading，教程：[前端每日实战：84](https://segmentfault.com/a/1190000015700996) | <img src="./084-loader/084-loader.gif" width=200 />
 [098-css-pig](./098-dumb-pig/index.html) | 用 CSS 创作一只愤怒小鸟中的绿猪，教程：[前端每日实战：98](https://segmentfault.com/a/1190000015909608) | <img src="./098-dumb-pig/098-dumb-pig.png" width=200 />
