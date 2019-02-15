@@ -15,8 +15,8 @@ class SimpleDragResize {
     e.stopPropagation();
     
     if (e.target.className === 'bottom-right') {
-      const oldWidth = +(window.getComputedStyle(this.el).width).replace('px', '');
-      const oldHeight = +(window.getComputedStyle(this.el).height).replace('px', '');
+      const oldWidth = Number(window.getComputedStyle(this.el).width.replace('px', ''));
+      const oldHeight = Number(window.getComputedStyle(this.el).height.replace('px', ''));
       document.onmousemove = me => {
         this.el.style.width = `${oldWidth + me.x - e.x}px`;
         this.el.style.height = `${oldHeight + me.y - e.y}px`;
@@ -24,7 +24,7 @@ class SimpleDragResize {
       return false;
     }
     if (e.target.className === 'bottom') {
-      const oldHeight = +(window.getComputedStyle(this.el).height).replace('px', '');
+      const oldHeight = Number(window.getComputedStyle(this.el).height.replace('px', ''));
       document.onmousemove = me => {
         this.el.style.height = `${oldHeight + me.y - e.y}px`;
       }
@@ -32,7 +32,7 @@ class SimpleDragResize {
       return false;
     }
     if (e.target.className === 'right') {
-      const oldWidth = +(window.getComputedStyle(this.el).width).replace('px', '');
+      const oldWidth = Number(window.getComputedStyle(this.el).width.replace('px', ''));
       document.onmousemove = me => {
         this.el.style.width = `${oldWidth + me.x - e.x}px`;
       }

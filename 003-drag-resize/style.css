@@ -14,10 +14,10 @@ body {
   background: skyblue;
   transform: translate(0px, 0px);
   cursor: move;
-  position: relative;
-  /* position: absolute;
-  top: 0;
-  left: 0; */
+  /* position: relative; */
+  position: absolute;
+  /* top: 0; */
+  /* left: 0; */
 }
 .box .top {
   width: 100%;
