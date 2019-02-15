@@ -17,24 +17,28 @@ class SimpleDragResize {
     if (e.target.className === 'bottom-right') {
       const oldWidth = Number(window.getComputedStyle(this.el).width.replace('px', ''));
       const oldHeight = Number(window.getComputedStyle(this.el).height.replace('px', ''));
+      const eX = e.clientX;
+      const eY = e.clientY;
       document.onmousemove = me => {
-        this.el.style.width = `${oldWidth + me.x - e.x}px`;
-        this.el.style.height = `${oldHeight + me.y - e.y}px`;
+        this.el.style.width = `${oldWidth + me.x - eX}px`;
+        this.el.style.height = `${oldHeight + me.y - eY}px`;
       }
       return false;
     }
     if (e.target.className === 'bottom') {
       const oldHeight = Number(window.getComputedStyle(this.el).height.replace('px', ''));
+      const eY = e.clientY;
       document.onmousemove = me => {
-        this.el.style.height = `${oldHeight + me.y - e.y}px`;
+        this.el.style.height = `${oldHeight + me.y - eY}px`;
       }
       document.onmouseup = this.onMouseUp;
       return false;
     }
     if (e.target.className === 'right') {
       const oldWidth = Number(window.getComputedStyle(this.el).width.replace('px', ''));
+      const eX = e.clientX;
       document.onmousemove = me => {
-        this.el.style.width = `${oldWidth + me.x - e.x}px`;
+        this.el.style.width = `${oldWidth + me.x - eX}px`;
       }
       document.onmouseup = this.onMouseUp;
       return false;

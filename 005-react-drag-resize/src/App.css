@@ -1,0 +1,7 @@
+.App {
+  border: 1px solid #ccc;
+  width: 500px;
+  height: 400px;
+  position: relative;
+  box-sizing: border-box;
+}

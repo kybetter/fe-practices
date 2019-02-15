@@ -30,32 +30,40 @@ export default {
     },
     onMouseDown(e) {
       const [x, y] = this.getXY(this.el.style.transform);
-      document.onmousemove = me => this.onDragMove(me, [e.clientX - x, e.clientY - y]);
+      const eX = e.clientX;
+      const eY = e.clientY;
+      document.onmousemove = me => this.onDragMove(me, [eX - x, eY - y]);
       document.onmouseup = this.onMouseUp;
     },
     onDragMove(e, XY) {
-      this.el.style.transform = `translate(${e.clientX - XY[0]}px, ${e.clientY - XY[1]}px)`;
+      const eX = e.clientX;
+      const eY = e.clientY;
+      this.el.style.transform = `translate(${eX - XY[0]}px, ${eY - XY[1]}px)`;
     },
     onRightMouseDown(e) {
       const oldWidth = Number(window.getComputedStyle(this.el).width.replace('px', ''));
+      const eX = e.clientX;
       document.onmousemove = me => {
-        this.el.style.width = `${oldWidth + me.x - e.x}px`;
+        this.el.style.width = `${oldWidth + me.x - eX}px`;
       }
       document.onmouseup = this.onMouseUp;
     },
     onBottomMouseDown(e) {
       const oldHeight = Number(window.getComputedStyle(this.el).height.replace('px', ''));
+      const eY = e.clientY;
       document.onmousemove = me => {
-        this.el.style.height = `${oldHeight + me.y - e.y}px`;
+        this.el.style.height = `${oldHeight + me.y - eY}px`;
       }
       document.onmouseup = this.onMouseUp;
     },
     onBottomRightMouseDown(e) {
       const oldWidth = Number(window.getComputedStyle(this.el).width.replace('px', ''));
       const oldHeight = Number(window.getComputedStyle(this.el).height.replace('px', ''));
+      const eX = e.clientX;
+      const eY = e.clientY;
       document.onmousemove = me => {
-        this.el.style.width = `${oldWidth + me.x - e.x}px`;
-        this.el.style.height = `${oldHeight + me.y - e.y}px`;
+        this.el.style.width = `${oldWidth + me.x - eX}px`;
+        this.el.style.height = `${oldHeight + me.y - eY}px`;
       }
       document.onmouseup = this.onMouseUp;
     },
